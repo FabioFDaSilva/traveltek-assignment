@@ -1,6 +1,4 @@
-export default function findFlightWithMostStops(flightDataJson) {
-    // Read the input from result and shorten syntax for readability purposes
-    let flightData = flightDataJson.flights.flight;
+export default function findFlightWithMostStops(flightData) {
     // declare empty array that hold the flights with most stops, because there could potentially be a tie
     let flightsWithMostStops = [];
 

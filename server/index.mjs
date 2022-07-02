@@ -5,6 +5,7 @@ import xml2js from 'xml2js';
 import watch from 'node-watch';
 import findFlightWithMostStops from './features/findFlightWithMostStops.mjs';
 import findDayWithMostDepFrom from './features/findDayWithMostDepFrom.mjs';
+import findDifferentFlightsForEachDay from "./features/findDifferentFlightsForEachDay.mjs"
 
 let parser = new xml2js.Parser();
 /// flight is misspelled as fligh on the file name
@@ -26,8 +27,12 @@ watch('./data/flighdata_A.xml', { recursive: true }, function (evt, name) {
 function initializeData() {
     dataJson = fs.readFile('./data/flighdata_A.xml', function (err, data) {
         parser.parseString(data, function (err, result) {
-            findFlightWithMostStops(result);
-            findDayWithMostDepFrom(result, "MAN");
+            // Read the input from result and shorten syntax for readability purposes
+            let flightData = result.flights.flight;
+
+            findFlightWithMostStops(flightData);
+            findDayWithMostDepFrom(flightData, "MAN");
+            findDifferentFlightsForEachDay(flightData);
             console.log('Done');
         });
     });

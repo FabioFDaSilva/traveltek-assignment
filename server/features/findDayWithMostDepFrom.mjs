@@ -14,11 +14,7 @@ function pushThisKeyValuePair(key, value) {
     })
 }
 
-export default function findDayWithMostDepFrom(flightDataJson, airportCode) {
-    // Read the input from result and shorten syntax for readability purposes
-    let flightData = flightDataJson.flights.flight;
-
-
+export default function findDayWithMostDepFrom(flightData, airportCode) {
     flightData.forEach(flight => {
 
         //If it's a direct flight
