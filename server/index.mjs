@@ -5,7 +5,8 @@ import xml2js from 'xml2js';
 import watch from 'node-watch';
 import findFlightWithMostStops from './features/findFlightWithMostStops.mjs';
 import findDayWithMostDepFrom from './features/findDayWithMostDepFrom.mjs';
-import findDifferentFlightsForEachDay from "./features/findDifferentFlightsForEachDay.mjs"
+import findDifferentFlightsForEachDay from "./features/findDifferentFlightsForEachDay.mjs";
+import findPorpotionOfFlights from "./features/findPorpotionOfFlights.mjs";
 
 let parser = new xml2js.Parser();
 /// flight is misspelled as fligh on the file name
@@ -30,9 +31,10 @@ function initializeData() {
             // Read the input from result and shorten syntax for readability purposes
             let flightData = result.flights.flight;
 
-            //findFlightWithMostStops(flightData);
-            //findDayWithMostDepFrom(flightData, "MAN");
-            //findDifferentFlightsForEachDay(flightData);
+            findFlightWithMostStops(flightData);
+            findDayWithMostDepFrom(flightData, "MAN");
+            findDifferentFlightsForEachDay(flightData);
+            findPorpotionOfFlights(flightData, "Business");
             console.log('Done');
         });
     });

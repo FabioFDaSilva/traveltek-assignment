@@ -24,10 +24,12 @@ export default function findDifferentFlightsForEachDay(flightData) {
             console.error("This entry on the flight data is corrupted (contains no information for flight)");
         }
     })
-
+    console.log("List of all the flight days of 2018:");
+    console.log("====================================");
     for (const [key, value] of Object.entries(dateDictionary)){
         console.log(key);
         console.log(value.length);
     }
+    console.log("====================================");
 
 }
