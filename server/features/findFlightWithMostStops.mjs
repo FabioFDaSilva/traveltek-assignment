@@ -56,10 +56,5 @@ export default function findFlightWithMostStops(flightData) {
         
         }
     })
-    if(flightsWithMostStops.length > 1){
-        console.log("There are currently " + flightsWithMostStops.length + " flights with an equal high amount of stops: ");
-    }else{
-        console.log("The highest amount of stops is: ");
-    }
-    console.log(Object.values(flightsWithMostStops[0].segments[0])[0].length);
+    return flightsWithMostStops;
 }

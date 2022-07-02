@@ -7,10 +7,12 @@ import findFlightWithMostStops from './features/findFlightWithMostStops.mjs';
 import findDayWithMostDepFrom from './features/findDayWithMostDepFrom.mjs';
 import findDifferentFlightsForEachDay from "./features/findDifferentFlightsForEachDay.mjs";
 import findPorpotionOfFlights from "./features/findPorpotionOfFlights.mjs";
+import express from 'express';
+const app = express();
 
 let parser = new xml2js.Parser();
 /// flight is misspelled as fligh on the file name
-let flightDataJson;
+let flightData;
 let dataJson;
 
 
@@ -29,13 +31,33 @@ function initializeData() {
     dataJson = fs.readFile('./data/flighdata_A.xml', function (err, data) {
         parser.parseString(data, function (err, result) {
             // Read the input from result and shorten syntax for readability purposes
-            let flightData = result.flights.flight;
-
-            findFlightWithMostStops(flightData);
-            findDayWithMostDepFrom(flightData, "MAN");
-            findDifferentFlightsForEachDay(flightData);
-            findPorpotionOfFlights(flightData, "Business");
-            console.log('Done');
+            flightData = result.flights.flight;
+            console.log('Data loaded');
         });
     });
 }
+
+app.get('/moststops', (req, res) =>{
+    res.send (findFlightWithMostStops(flightData));
+})
+
+app.get('/mostdeps', (req, res) =>{
+    res.send ( findDayWithMostDepFrom(flightData, "MAN"));
+})
+
+app.get('/diffflights', (req, res) =>{
+    res.send ( findDifferentFlightsForEachDay(flightData));
+})
+
+app.get('/flightpercent', (req, res) =>{
+    let percentage = findPorpotionOfFlights(flightData, "Business");
+    res.send (percentage.toString());
+})
+
+app.get('/curious', (req, res) =>{
+    let percentage = findPorpotionOfFlights(flightData, "empty")
+    res.send (percentage.toString());
+})
+app.listen(3000, () =>{
+    console.log(`server started on port ${3000}`);
+});

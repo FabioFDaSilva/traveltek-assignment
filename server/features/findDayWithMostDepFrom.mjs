@@ -67,10 +67,6 @@ export default function findDayWithMostDepFrom(flightData, airportCode) {
         }
 
     }
-    if(keysWithHighestValues.length > 1){
-        console.log("The days with most departures from " + airportCode + " are on: " +Object.values(keysWithHighestValues[0])[0] + " with " + Object.values(keysWithHighestValues[0])[1].length + " departures.");
-    }else if (keysWithHighestValues.length == 1){
-        console.log("The day with most departures from " + airportCode + " is on: " +Object.values(keysWithHighestValues[0])[0] + " with " + Object.values(keysWithHighestValues[0])[1].length + " departures.");
-    }
+    return keysWithHighestValues;
     
 }

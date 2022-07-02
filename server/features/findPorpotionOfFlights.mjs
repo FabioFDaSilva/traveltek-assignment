@@ -51,7 +51,9 @@ export default function findPorpotionOfFlights(flightData, flightClass){
             totalUnclassedFlights = classesDictionary[key].length;
         }
     }
-
-    console.log("percentage of " + flightClass + " class flights is " + ((totalBusinessClassFlights / totalFlights) * 100)+ "%" );
-    console.log("There are also flights which have no class, these make up "+ ((totalUnclassedFlights / totalFlights) * 100)+ "% of all flights in 2018");
+    if(flightClass == "Business"){
+        return ((totalBusinessClassFlights / totalFlights) * 100);
+    }else if (flightClass == "empty"){
+        return ((totalUnclassedFlights / totalFlights) * 100);
+    }
 }
