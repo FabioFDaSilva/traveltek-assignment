@@ -55,16 +55,16 @@ function findFlightWithMostStops(flightDataJson) {
             //loop through the segments
             for(let i = 0; i < flightSegments.length; i++ ){
                 
-                // declare the journey as a variable for readability
-                var journey = Object.values(flightSegments[i])[0].journey;
+                // declare the segment as a variable for readability
+                var segment = Object.values(flightSegments[i])[0];
 
                 //if it's an outward trip, add it to the outgoing flight segments of this trip
-                if(journey == "out"){
-                    outgoingStopsOnFlight.push(Object.values(flightSegments[i])[0]);
+                if(segment.journey == "out"){
+                    outgoingStopsOnFlight.push(segment);
                     
                 }//otherwise add it to the incoming
-                else if (journey == "in"){
-                    incomingStopsOnFlight.push(Object.values(flightSegments[i])[0])
+                else if (segment.journey == "in"){
+                    incomingStopsOnFlight.push(segment);
                 }
             }
 
