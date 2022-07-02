@@ -30,9 +30,9 @@ function initializeData() {
             // Read the input from result and shorten syntax for readability purposes
             let flightData = result.flights.flight;
 
-            findFlightWithMostStops(flightData);
-            findDayWithMostDepFrom(flightData, "MAN");
-            findDifferentFlightsForEachDay(flightData);
+            //findFlightWithMostStops(flightData);
+            //findDayWithMostDepFrom(flightData, "MAN");
+            //findDifferentFlightsForEachDay(flightData);
             console.log('Done');
         });
     });
