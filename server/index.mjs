@@ -58,6 +58,6 @@ app.get('/curious', (req, res) =>{
     let percentage = findPorpotionOfFlights(flightData, "empty")
     res.send (percentage.toString());
 })
-app.listen(3000, () =>{
-    console.log(`server started on port ${3000}`);
+app.listen(3001, () =>{
+    console.log(`server started on port ${3001}`);
 });

@@ -7,35 +7,39 @@ import { updateList, selectFlightsWithMostStops } from "./flightsWithMostStopsSl
 const FlightsWithMostStops = () => {
     const currentFlights = useSelector(selectFlightsWithMostStops);
     //const currentStoredFlights = JSON.stringify(currentFlights);
-    let isUpdated = false;
     function displayMainText() {
-        console.log(currentFlights[0]);
         if (currentFlights.length > 1) {
-            return <h2>{currentFlights.length} Flights with the most stops</h2>
-        } else {
             return (
                 <div>
-                    <h2>1 Flight with the most stops</h2>
-                    <h2>{currentFlights}</h2>
+                    <h2 className="text-center">Most Stops: {currentFlights[0].segments[0].segment.length} </h2>
+
+                    <h2 className="text-center">{currentFlights.length} Flights</h2>
+                </div>
+            )
+        } else if (currentFlights.length === 1) {
+            return (
+                <div>
+                    <h2 className="text-center">Most Stops: {currentFlights[0].segments[0].segment.length} stops</h2>
+
+                    <h2 className="text-center">1 Flight</h2>
                 </div>
             )
         }
     }
     function displayFlights(data) {
+
         return (
             data.map((flight, i) => (
-                <li key={flight.$.id}>
-                    <div>
-                        <h3>Stops On this Flight: {flight.segments[0].segment.length}</h3>
-                        <p>Flight ID: {flight.$.id} </p>
-                        <p>Flight Departure Airport: {flight.$.depair}</p>
-                        <p>Flight Destination Airport: {flight.$.destair}</p>
-                        <p>Flight Departure Date: {flight.$.outdepartdate}</p>
-                        <p>Flight Arrival Date: {flight.$.inarrivaldate}</p>
-                        <br />
+                <div className="d-flex justify-content-center p-2 col-md-6 col-xl-2 col-lg-4" key={flight.$.id}>
+                    <div className="flex-column">
+                        <h3>ID: {flight.$.id} </h3>
+                        <p>Departure Airport: {flight.$.depair}</p>
+                        <p>Destination Airport: {flight.$.destair}</p>
+                        <p>Departure Date: {flight.$.outdepartdate}</p>
+                        <p>Arrival Date: {flight.$.inarrivaldate}</p>
                     </div>
 
-                </li>)))
+                </div>)))
     }
     const dispatch = useDispatch();
     const getFlights = async () => {
@@ -43,11 +47,11 @@ const FlightsWithMostStops = () => {
             const response = await fetch("/api/moststops");
             const tojson = await response.json();
             dispatch(updateList(tojson));
-            isUpdated = true;
+
         } catch (err) {
             console.error(err.message);
         }
-        
+
 
     }
 
@@ -57,8 +61,12 @@ const FlightsWithMostStops = () => {
 
     return (
         <div>
-            {isUpdated ? displayMainText() : <div>Loading...</div>}
-            {isUpdated ? displayFlights(currentFlights) : <br/>}
+            {currentFlights ? displayMainText() : <div>Loading...</div>}
+            {currentFlights ? (
+                <div className="d-flex justify-content-center mw-100 mx-auto px-2">
+                    {displayFlights(currentFlights)}
+                </div>
+            ) : <br />}
         </div>
     )
 }
