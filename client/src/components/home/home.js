@@ -1,8 +1,17 @@
 import React from "react"
+import styles from "./home.module.scss";
+import logo from "../../app/logo/logo.png";
 
-const Home = () =>{
+const Home = () => {
     return (
-        <div className="text-center mt-5">This is an assignment for TravelTek.</div>
+        <div className={styles.container}>
+            <div className={styles.logoContainer}>
+                <div className={styles.logo}>
+                    <img src={logo} alt="logo" />
+                </div>
+            </div>
+
+        </div>
     )
 }
 

@@ -1,0 +1,45 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+
+.logoContainer {
+
+    $width: 400px;
+    width: $width;
+    height: $width;
+
+    .logo {
+        width: $width;
+        height: $width;
+        border-radius: 50%;
+        background: white;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+
+        img {
+            flex: 0 0 auto;
+            width: 90%;
+
+        }
+    }
+    &:hover .logo{
+        animation: flip 1.5s ease-out forwards;
+    }
+}
+
+@keyframes flip {
+    from {
+        transform: rotateY(0);
+    }
+
+    to {
+        transform: rotateY(720deg);
+    }
+}

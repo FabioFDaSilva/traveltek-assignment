@@ -30,8 +30,8 @@ const FlightsWithMostStops = () => {
 
         return (
             data.map((flight, i) => (
-                <div className="d-flex justify-content-center p-2 col-md-6 col-xl-2 col-lg-4" key={flight.$.id}>
-                    <div className="flex-column">
+                <div key={flight.$.id}>
+                    <div>
                         <h3>ID: {flight.$.id} </h3>
                         <p>Departure Airport: {flight.$.depair}</p>
                         <p>Destination Airport: {flight.$.destair}</p>
@@ -63,7 +63,7 @@ const FlightsWithMostStops = () => {
         <div>
             {currentFlights ? displayMainText() : <div>Loading...</div>}
             {currentFlights ? (
-                <div className="d-flex justify-content-center mw-100 mx-auto px-2">
+                <div>
                     {displayFlights(currentFlights)}
                 </div>
             ) : <br />}
