@@ -50,13 +50,8 @@ app.get('/diffflights', (req, res) =>{
     res.send ( findDifferentFlightsForEachDay(flightData));
 })
 
-app.get('/flightpercent', (req, res) =>{
-    let percentage = findPorpotionOfFlights(flightData, "Business");
-    res.send (percentage.toString());
-})
-
-app.get('/curious', (req, res) =>{
-    let percentage = findPorpotionOfFlights(flightData, "empty")
+app.get('/flightpercent/:type', (req, res) =>{
+    let percentage = findPorpotionOfFlights(flightData, req.params.type);
     res.send (percentage.toString());
 })
 app.listen(3001, () =>{

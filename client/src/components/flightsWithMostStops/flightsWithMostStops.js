@@ -11,17 +11,13 @@ const FlightsWithMostStops = () => {
         if (currentFlights.length > 1) {
             return (
                 <div>
-                    <h2 className="text-center">Most Stops: {currentFlights[0].segments[0].segment.length} </h2>
-
-                    <h2 className="text-center">{currentFlights.length} Flights</h2>
+                    <h2 className={styles.stopCount}>{currentFlights.length} Flights  with {currentFlights[0].segments[0].segment.length} stops</h2>
                 </div>
             )
         } else if (currentFlights.length === 1) {
             return (
                 <div>
-                    <h2 className="text-center">Most Stops: {currentFlights[0].segments[0].segment.length} stops</h2>
-
-                    <h2 className="text-center">1 Flight</h2>
+                    <h2 className="text-center">1 Flight with {currentFlights[0].segments[0].segment.length} stops</h2>
                 </div>
             )
         }
