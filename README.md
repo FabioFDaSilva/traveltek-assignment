@@ -24,7 +24,7 @@ Notes:
 
 2. localhost:3000 and localhost:3001 will be used for this application, if you have anything else running on these ports feel free to change the ports:
     - server port: traveltek-assignment/server/index.mjs line 57;
-    - server proxy port: traveltek-assignment/client/src/serupProxy.js line 7;
+    - server proxy port: traveltek-assignment/client/src/setupProxy.js line 7;
     - client port: traveltek-assignment/client/package.json line 26:
         - change ```"start": "react-scripts start"``` to ```"start": "PORT= yourDesiredPort react-scripts start"```,
 
