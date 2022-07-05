@@ -7,17 +7,28 @@ IE:
 
 Instructions to run:
 
-1 - extract files onto a directory of your choice
-2 - cd traveltek-assignment/server
-3 - npm install
-4 - node index.mjs
-5 - cd ../client
-6 - npm install
-7 - npm start
+1 - On a directory of your choice, open a terminal and type : ```git clone https://github.com/FabioFDaSilva/traveltek-assignment.git```
+2 - ```cd traveltek-assignment/server```
+3 - ```npm install```
+3 - ```cd ../client```
+4 - ```npm install```
+5 - ```npm start ```
+6 - open another terminal
+7 - ```cd traveltek-assignment/server```
+8 - ```node index.mjs```
+9 - Navigate to localhost:3000 once react is done compiling and mounting.
 
-after npm start, give React a couple of minutes to start a page, once the page loads feel free to navigate and interact.
+Notes:
 
-Note: the .xml file is located at traveltek-assignment/server/data/
+1 -npm start sometimes takes a while to launch the application.
+
+2 - localhost:3000 and localhost:3001 will be used for this application, if you have anything else running on these ports feel free to change the ports:
+    2.1-server port: traveltek-assignment/server/index.mjs line 57;
+    2.2-server proxy port: traveltek-assignment/client/src/serupProxy.js line 7;
+    2.3-client port: traveltek-assignment/client/package.json line 26:
+        2.3.1 - change ```"start": "react-scripts start"``` to ```"start": "PORT= yourDesiredPort react-scripts start"```,
+
+2 - the .xml file is located at traveltek-assignment/server/data/
 
 
 
