@@ -60,13 +60,9 @@ export default function findDayWithMostDepFrom(flightData, airportCode) {
                     }
                     // push this key value pair as the new highest
                     pushThisKeyValuePair(key, value);
-<<<<<<< HEAD
                 } else if (value.length == valueLengthOfArray && key != element.date) {
                     //otherwise if the sizes are the same and the keys aren't, push the current key value pair as another "highest departure" item
-=======
-                } else if (value.length == valueLengthOfArray && key != Object.keys(element)) {
-                    //otherwise if they are the same, push the current key value pair as another "highest departure" item
->>>>>>> client
+
                     pushThisKeyValuePair(key, value);
                 }
             })
