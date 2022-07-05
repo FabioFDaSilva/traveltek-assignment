@@ -1,7 +1,7 @@
 import React, { useEffect } from "react"
 import { useSelector, useDispatch } from "react-redux";
 import { updateList, selectFlightsWithMostStops } from "./flightsWithMostStopsSlice";
-
+import styles from "./flightsWithMostStops.module.scss";
 
 
 const FlightsWithMostStops = () => {
@@ -29,17 +29,26 @@ const FlightsWithMostStops = () => {
     function displayFlights(data) {
 
         return (
-            data.map((flight, i) => (
-                <div key={flight.$.id}>
-                    <div>
-                        <h3>ID: {flight.$.id} </h3>
-                        <p>Departure Airport: {flight.$.depair}</p>
-                        <p>Destination Airport: {flight.$.destair}</p>
-                        <p>Departure Date: {flight.$.outdepartdate}</p>
-                        <p>Arrival Date: {flight.$.inarrivaldate}</p>
+            <div className={styles.flightsGrid}>
+                {data.map((flight, i) => (
+                <div className={styles.flightContainer} key={flight.$.id}>
+                    <div className={styles.id}>#{flight.$.id} </div>
+                    <div className={styles.flightDetails}>
+                        <div className={styles.source}>
+                            <div className={styles.depAir}>{flight.$.depair}</div>
+                            <div>{flight.$.outdeparttime}</div>
+                            <div className={styles.depDate}>{flight.$.outdepartdate}</div>
+                        </div>
+                        <i className="bi bi-arrow-right"></i>
+                        <div className={styles.destination}>
+                            <div className={styles.destAir}> {flight.$.destair} </div>
+                            <div>{flight.$.inarrivaltime}</div>
+                            <div className={styles.arrDate}>{flight.$.inarrivaldate}</div>
+                        </div>
                     </div>
 
-                </div>)))
+                </div>))}
+            </div>)
     }
     const dispatch = useDispatch();
     const getFlights = async () => {
@@ -57,16 +66,12 @@ const FlightsWithMostStops = () => {
 
     useEffect(() => {
         getFlights();
-    })
+    }, []);
 
     return (
         <div>
             {currentFlights ? displayMainText() : <div>Loading...</div>}
-            {currentFlights ? (
-                <div>
-                    {displayFlights(currentFlights)}
-                </div>
-            ) : <br />}
+            {currentFlights ? displayFlights(currentFlights) : <br />}
         </div>
     )
 }

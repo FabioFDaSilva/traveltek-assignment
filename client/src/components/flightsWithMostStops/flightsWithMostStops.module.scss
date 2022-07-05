@@ -1,0 +1,48 @@
+.flightsGrid{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    justify-items: center;
+}
+
+.flightContainer {
+    background-color: var(--dark-background);
+    border-radius: 15px;
+    padding: 25px;
+    margin: 20px;
+    color: var(--off-white);
+    max-width: 400px;
+    min-width: 350px;
+    flex-direction: column;
+    display: flex;
+}
+.flightDetails {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+}
+.source, .destination{
+    height: 60px;
+    display: flex;
+    flex-direction: column;
+    flex: 1 0 0;
+    align-items: center;
+    justify-content: space-around;
+}
+.id {
+    align-self: center;
+    margin-bottom: 25px;
+
+}
+.depAir{
+
+}
+.destAir{
+
+}
+.depDate{
+
+}
+.arrDate{
+
+}

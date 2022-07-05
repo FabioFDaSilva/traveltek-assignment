@@ -24,8 +24,8 @@ li {
                 transition: background 0.2s ease;
 
                 &:global(.active) {
-                    background: rgba(0,0,0, 0.2);
-                    color: white;
+                    background: var(--dark-background);
+                    color: var(--off-white);
                 }
                 display:block;
                 padding: 20px 30px;
@@ -34,7 +34,7 @@ li {
                 text-transform: uppercase;
 
                 &:not(:global(.active)):hover {
-                    background-color: rgba(255, 255, 255, 0.2);
+                    background-color: var(--light-background);
                 }
             }
         }

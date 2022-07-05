@@ -8,10 +8,9 @@ import FlightsWithMostStops from './components/flightsWithMostStops/flightsWithM
 import FlightsFromDay from './components/flightsFromDay/flightsFromDay.js';
 import Proportion from './components/proportion/proportion.js';
 import styles from "./App.module.scss";
+import "./palette.module.scss";
 
 function App() {
-  console.log(styles);
-  console.log(styles.container);
   return (
     <div className={styles.container}>
       <BrowserRouter>
