@@ -41,8 +41,14 @@ app.get('/moststops', (req, res) =>{
     res.send (findFlightWithMostStops(flightData));
 })
 
+<<<<<<< HEAD
 app.get('/mostdeps/:aircode', (req, res) =>{
     res.send ( findDayWithMostDepFrom(flightData, req.params.aircode));
+=======
+app.get('/mostdeps/:airCode', (req, res) =>{
+    
+    res.send ( findDayWithMostDepFrom(flightData, req.params.airCode));
+>>>>>>> client
 })
 
 app.get('/diffflights', (req, res) =>{
