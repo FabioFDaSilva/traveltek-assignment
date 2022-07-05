@@ -1,6 +1,9 @@
 import { pushToDictionary } from "./helperFunctions.mjs";
 
-//Create an empty dictionary, that will hold the date as a key, and the flights as values
+
+
+export default function findDayWithMostDepFrom(flightData, airportCode) {
+    //Create an empty dictionary, that will hold the date as a key, and the flights as values
 let flightsFromAirport = {};
 
 // declare a variable that will hold the keys with the most items inside its values
@@ -14,8 +17,6 @@ function pushThisKeyValuePair(key, value) {
         flights: value
     })
 }
-
-export default function findDayWithMostDepFrom(flightData, airportCode) {
     flightData.forEach(flight => {
         //If it's a direct flight
         if (Object.keys(flight).length == 1) {
@@ -59,7 +60,7 @@ export default function findDayWithMostDepFrom(flightData, airportCode) {
                     }
                     // push this key value pair as the new highest
                     pushThisKeyValuePair(key, value);
-                } else if (value.length == valueLengthOfArray) {
+                } else if (value.length == valueLengthOfArray && key != Object.keys(element)) {
                     //otherwise if they are the same, push the current key value pair as another "highest departure" item
                     pushThisKeyValuePair(key, value);
                 }
