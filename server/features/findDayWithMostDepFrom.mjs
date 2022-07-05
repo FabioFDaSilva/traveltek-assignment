@@ -1,21 +1,22 @@
 import { pushToDictionary } from "./helperFunctions.mjs";
 
-//Create an empty dictionary, that will hold the date as a key, and the flights as values
-let flightsFromAirport = {};
-
-// declare a variable that will hold the keys with the most items inside its values
-let keysWithHighestValues = [];
-
-
-//function to keep it DRY, pushes a key value pair onto keysWithHighestValues
-function pushThisKeyValuePair(key, value) {
-    keysWithHighestValues.push({
-        date: key,
-        flights: value
-    })
-}
 
 export default function findDayWithMostDepFrom(flightData, airportCode) {
+
+    //Create an empty dictionary, that will hold the date as a key, and the flights as values
+    let flightsFromAirport = {};
+
+    // declare a variable that will hold the keys with the most items inside its values
+    let keysWithHighestValues = [];
+
+
+    //function to keep it DRY, pushes a key value pair onto keysWithHighestValues
+    function pushThisKeyValuePair(key, value) {
+        keysWithHighestValues.push({
+            date: key,
+            flights: value
+        })
+    }
     flightData.forEach(flight => {
         //If it's a direct flight
         if (Object.keys(flight).length == 1) {
@@ -39,7 +40,7 @@ export default function findDayWithMostDepFrom(flightData, airportCode) {
             }
         } else {
             console.error("This entry on the flight data is corrupted (contains no information for flight)");
-        }       
+        }
 
     });
     for (const [key, value] of Object.entries(flightsFromAirport)) {
@@ -59,8 +60,8 @@ export default function findDayWithMostDepFrom(flightData, airportCode) {
                     }
                     // push this key value pair as the new highest
                     pushThisKeyValuePair(key, value);
-                } else if (value.length == valueLengthOfArray) {
-                    //otherwise if they are the same, push the current key value pair as another "highest departure" item
+                } else if (value.length == valueLengthOfArray && key != element.date) {
+                    //otherwise if the sizes are the same and the keys aren't, push the current key value pair as another "highest departure" item
                     pushThisKeyValuePair(key, value);
                 }
             })
@@ -68,5 +69,5 @@ export default function findDayWithMostDepFrom(flightData, airportCode) {
 
     }
     return keysWithHighestValues;
-    
+
 }

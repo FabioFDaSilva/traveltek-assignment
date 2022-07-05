@@ -24,6 +24,27 @@ export default function findDifferentFlightsForEachDay(flightData) {
             console.error("This entry on the flight data is corrupted (contains no information for flight)");
         }
     })
-    return dateDictionary;
+
+    function sortDictionaryByDate(dict){
+        // use the sort() and reduce() functions to sort the dictionary based on the keys.
+        return Object.keys(dict).sort().reduce((previous, index) => {
+            previous[index] = dict[index];
+            return previous;
+        }, {}); 
+    }
+    let sortedDictionary = sortDictionaryByDate(dateDictionary);
+    
+        //Sometimes the flight has no date, causing issues for the client
+    function filterDictionary(dict){
+        // if on the dictionary, one of the entries has no key
+        if (dict[""].length > 0){
+            // delete it
+            delete dict[""];
+        }
+
+        return dict;
+    }
+    let filteredDictionary = filterDictionary(sortedDictionary)
+    return filteredDictionary;
 
 }
