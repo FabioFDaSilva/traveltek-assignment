@@ -4,7 +4,9 @@ This is not a complete project and much of the output could be displayed in a mo
 IE: 
 - Proportion of flights could be displayed as a pie chart, encompassing the curious fact;
 - Most daily departures from Manchester could have every flight displayed as a card;
-
+Prerequisits:
+ - git installed (version 2.37.0.windows.1 used for the project);
+ - Node Installed (version v16.15.1 used for the project);
 Instructions to run:
 
 1. On a directory of your choice, open a terminal and type : ```git clone https://github.com/FabioFDaSilva/traveltek-assignment.git```
